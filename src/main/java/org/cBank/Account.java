@@ -2,7 +2,6 @@ package org.cBank;
 
 /**
  * класс конструктор счёта содержит методы для работы с балансом
- * лучше все мат расчёты вести в базе а сущности создавать только для вывода ин
  */
 public class Account {
     private final int accountNum;
@@ -31,10 +30,6 @@ public class Account {
     public void addPercent(double percent) {
         accountMoneyBalance += (accountMoneyBalance * percent) / 100;
     }
-
-//    public void transferMoney(int sum) {
-//        accountMoneyBalance += sum;
-//    }
 
     public int getAccountNum() {
         return accountNum;
