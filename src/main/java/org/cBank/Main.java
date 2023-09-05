@@ -5,9 +5,10 @@ import java.time.temporal.TemporalAdjusters;
 import java.util.Scanner;
 
 /**
- * запуск таймера для проверки является ли текущая дата последним днём месяца,
+ * Главный класс для запуска и упарвления приложением:
+ * - запуск таймера для проверки является ли текущая дата последним днём месяца,
  * в этом случает начисляется процет по балансу (размер процента записан в файле config.yml)
- * через объек Bank подключается к базе данных с информацией о клиентах и управленик приложением
+ * - через объек Bank подключается к базе данных с информацией о клиентах и управленией операциями
  */
 // connecting to the postgresDataBase
 //export CLASSPATH=/Users/spesu/Java/Clever-Bank/src/main/resourcesp/ostgresql-42.5.4.jar:$CLASSPATH
@@ -83,19 +84,6 @@ public class Main {
             }
         }
         System.out.println("Окончено!");
-
-//        User user = bank.getUserFromBase(1111111111);
-//        User user2 = bank.getUserFromBase(1111111114);
-//
-//
-//        System.out.println(user);
-//        bank.doTransactionSub(user2, 80);
-//        System.out.println(user2);
-//        bank.doTransfer(bank.getUserFromBase(1111111111), bank.getUserFromBase(1111111134), 1000);
-//        System.out.println(user2);
-//        System.out.println(user);
-//        System.out.println(bank.getTransactions());
-
     }
 }
 
