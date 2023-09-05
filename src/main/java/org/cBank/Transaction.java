@@ -1,7 +1,7 @@
 package org.cBank;
 /**
  * Класс содержит все переменные транзакций и информацию для чека после операции
- * метод записывает чек в файл
+ * и метод записывает чека в файл
  */
 
 import java.io.File;
@@ -37,21 +37,6 @@ public class Transaction {
         this.accountSender = accountSender;
         this.sumOfMoney = sumOfMoney;
     }
-
-//    @Override
-//    public String toString() {
-//        return "Transaction{" +
-//                "Тип транзакции ='" + transactionType + '\'' +
-//                ", транзация № = " + transactionNum +
-//                ", дата = " + transactionDate +
-//                ", время = " + transactionTime.toString().replaceAll("\\.\\d*", "") +
-//                ", bankReceiver='" + bankReceiver + '\'' +
-//                ", bankSender='" + bankSender + '\'' +
-//                ", accountReceiver='" + accountReceiver + '\'' +
-//                ", accountSender='" + accountSender + '\'' +
-//                ", сумма = " + sumOfMoney +
-//                '}'+"\n";
-//    }
 
     public String toString() {
         return  String.format(
