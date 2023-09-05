@@ -1,11 +1,10 @@
 package org.cBank;
 
 /**
- * пользовательский класс которы содержит класс счёта (аккаунт) и нужен для передачи в банк
+ * пользовательский класс которы содержит класс счёта (аккаунт) и нужен для передачи объекта пользователя в банк
  */
 public class User {
 
-    //private final int accountNum;
     private final String userName;
     private final Account account;
 
