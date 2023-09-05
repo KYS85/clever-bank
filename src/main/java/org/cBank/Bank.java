@@ -7,17 +7,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
- * банк обрабатыввет операции пополнение, снятие, перевод (внутри этих методов работают методы из пользоателей
- * -> аккаунтов, банк собирает клиентскую базу - берёт инфу и передаёт на обработку в main
- * работа с базой  для сбоки обьекта клиента из базы SQL
- * -----> to do сдлеать записи резултата в базу по итогу операций
- *? все транзации в списке - можно закинуть в мапу ??? для доступа по промежутку времени ... )
- *? или сохранять историю транзакций в базе
- * метод для обновления баланса на конец месяца (прибавка процента из конфигурациооного файла) -> сделал в новом
- * потоке цикл вставить проверку на текущюю дату,
- * сделал из ind -> double для сумм
- * сделать вывод после каждой операции трансакия из обьекта в файл по условию
- * все расчёты лучше делать в SQL
+ * - банк обрабатыввет операции пополнение, снятие, перевод (внутри этих методов работают методы из класса Account
+ * - банк собирает обьекта клиента - берёт информацию из базы SQL и передаёт на обработку в main работает с базой   
+ * и производит запись резултата в базу по итогу операций
+ * - содержит метод для обновления баланса на конец месяца (прибавка процента из конфигурациооного файла) 
+ * - после каждой операции методы класса выводят в консоль информацию (информация о клиенте и чек) и записыват
+ * банковский чек в txt файл в папку check (метод записи в классе Transaction)
  */
 public class Bank {
     private final String homeBankName;
@@ -70,7 +65,6 @@ public class Bank {
             System.out.println(ex.getMessage());
         }
     }
-
     User getUserFromBase(int accoutNum) {  // get user from DB by account number (по номеру счёта)
         User user = null;
         try{
@@ -120,8 +114,8 @@ public class Bank {
         return user;
     }
 
-    public void doTransactionAdd(User user, double moneyAmount)  { //пополенеие
-        user.getAccount().addMoney(moneyAmount); // метод логики java оперирует счетом в проге
+    public void doTransactionAdd(User user, double moneyAmount)  { //пополенеие счёта
+        user.getAccount().addMoney(moneyAmount); // метод логики java оперирует счетом в программе
         // запись итоговой суммы после пополнения в таблицу базы
         try{
             String url = "jdbc:postgresql://127.0.0.1:5432/pgCleverBankDB";
@@ -226,8 +220,7 @@ public class Bank {
         return homeBankName;
     }
 
-    public void addPercentSQL(double percent) {
-        //accountMoneyBalance += (accountMoneyBalance * percent) / 100;
+    public void addPercentSQL(double percent) { // метод начисления процента по балансу 
         try{
             String url = "jdbc:postgresql://127.0.0.1:5432/pgCleverBankDB";
             String username = "postgres";
